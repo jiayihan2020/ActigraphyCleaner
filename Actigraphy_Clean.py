@@ -24,19 +24,19 @@ def actigraphy_data():
     )
     df = df.filter(["Line", "Date", "Time", "Activity"])
     df = df.rename(columns={"Activity": "Axis"})
-    # try:
-    #     df.to_csv(
-    #         "/SIT_ControlGroupFiltered/SIT001_allepoch.csv",
-    #         index=False,
-    #         encoding="utf-8",
-    #     )
-    # except OSError:
-    #     os.mkdir("SIT_ControlGroupFiltered")
-    #     df.to_csv(
-    #         "./SIT_ControlGroupFiltered/SIT001_all epoch.csv",
-    #         index=False,
-    #         encoding="utf-8",
-    #     )
+    try:
+        df.to_csv(
+            "/SIT_ControlGroupFiltered/SIT001_allepoch.csv",
+            index=False,
+            encoding="utf-8",
+        )
+    except OSError:
+        os.mkdir("SIT_ControlGroupFiltered")
+        df.to_csv(
+            "./SIT_ControlGroupFiltered/SIT001_all epoch.csv",
+            index=False,
+            encoding="utf-8",
+        )
 
     return df.head(20)
 
