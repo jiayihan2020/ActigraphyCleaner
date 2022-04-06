@@ -33,7 +33,7 @@ def actigraphy_data():
     except OSError:
         os.mkdir("SIT_ControlGroupFiltered")
         df.to_csv(
-            "./SIT_ControlGroupFiltered/SIT001_allepoch.csv",
+            "./SIT_ControlGroupFiltered/SIT001_all epoch.csv",
             index=False,
             encoding="utf-8",
         )
