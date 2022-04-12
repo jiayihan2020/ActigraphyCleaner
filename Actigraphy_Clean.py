@@ -5,7 +5,7 @@ import os
 import datetime as dt
 
 input_directory = "SIT_LTLB"
-output_directory = "SIT_LTLB Filtered"
+output_directory = "SIT_LTLB Group"
 os.chdir(input_directory)
 
 
@@ -41,8 +41,10 @@ def actigraphy_data():
         df = df.filter(["Date", "Time", "Activity"])
         df = df.rename(columns={"Activity": "Axis1"})
         df["Axis1"].fillna(0, inplace=True)
-        df["Date"].apply(pd.to_datetime)
+        df["Date"].apply(pd.to_datetime, infer_datetime_format=True)
         df["Date"] = pd.to_datetime(df["Date"]).dt.strftime("%#d/%#m/%Y")
+        df["Time"].apply(pd.to_datetime)
+        df["Time"] = pd.to_datetime(df["Time"]).dt.strftime("%#H:%M")
         output_filename = file.split(".")[0].replace("IT", "")
 
         try:
