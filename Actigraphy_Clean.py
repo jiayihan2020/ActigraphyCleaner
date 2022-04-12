@@ -2,16 +2,16 @@ import pandas as pd
 import re
 import csv
 import os
+import datetime as dt
 
-input_directory = "SIT_controlGroup"
-output_directory = "SIT_ControlGroup Filtered"
+input_directory = "SIT_LTLB"
+output_directory = "SIT_LTLB Filtered"
 os.chdir(input_directory)
 
 
 def actigraphy_data():
 
     target = re.compile(r"-------------------- Epoch-by-Epoch Data -------------------")
-    problematic_file = []
     for file in os.listdir():
         print(f"Now reading {file}...")
 
@@ -38,25 +38,26 @@ def actigraphy_data():
                 continue
             else:
                 break
-        df = df.filter(["Line", "Date", "Time", "Activity"])
-        df = df.rename(columns={"Activity": "Axis"})
-        if df.iloc[0]["Line"] != 1:
-            problematic_file.append(file)
+        df = df.filter(["Date", "Time", "Activity"])
+        df = df.rename(columns={"Activity": "Axis1"})
+        df["Axis1"].fillna(0, inplace=True)
+        df["Date"].apply(pd.to_datetime)
+        df["Date"] = pd.to_datetime(df["Date"]).dt.strftime("%#d/%#m/%Y")
+        output_filename = file.split(".")[0].replace("IT", "")
 
         try:
             df.to_csv(
-                f"./{output_directory}/{file}_allepoch.csv",
+                f"./{output_directory}/{output_filename}_all epoch.csv",
                 index=False,
                 encoding="utf-8",
             )
         except OSError:
             os.mkdir(f"{output_directory}")
             df.to_csv(
-                f"./{output_directory}/{file}_all epoch.csv",
+                f"./{output_directory}/{output_filename}_all epoch.csv",
                 index=False,
                 encoding="utf-8",
             )
-    print(problematic_file) if len(problematic_file) > 0 else print("All good!")
 
     return None
 
