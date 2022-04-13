@@ -45,7 +45,7 @@ def actigraphy_data():
         df["Date"] = pd.to_datetime(df["Date"]).dt.strftime("%#d/%#m/%Y")
         df["Time"].apply(pd.to_datetime)
         df["Time"] = pd.to_datetime(df["Time"]).dt.strftime("%#H:%M")
-        output_filename = file.split(".")[0].replace("IT", "")
+        output_filename = file.split(".")[0]
 
         try:
             df.to_csv(
