@@ -10,7 +10,7 @@ os.chdir(input_directory)
 
 def actigraphy_data():
 
-    target = re.compile(r"-------------------- Epoch-by-Epoch Data -------------------")
+    target = re.compile(r"-{20} Epoch-by-Epoch Data -{19}")
     for file in os.listdir():
         print(f"Now reading {file}...")
 
