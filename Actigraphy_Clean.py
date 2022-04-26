@@ -2,10 +2,9 @@ import pandas as pd
 import re
 import csv
 import os
-import datetime as dt
 
-input_directory = "SIT_LTLB"
-output_directory = "SIT_LTLB Group"
+input_directory = "SIT_controlGroup"
+output_directory = "SIT_control Group"
 os.chdir(input_directory)
 
 
