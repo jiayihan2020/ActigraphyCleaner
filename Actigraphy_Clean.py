@@ -34,7 +34,6 @@ def actigraphy_data():
                 df.iloc[0]["Line"]
             except KeyError:
                 row -= 1
-                continue
             else:
                 break
         df = df.filter(["Date", "Time", "Activity"])
