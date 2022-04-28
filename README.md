@@ -2,13 +2,13 @@
 
 ## Table of Contents
 
-- About Actigraphy Cleaner
-- Requirements
-  - Optional
-- Setting up Python
-- How to use
-
----
+- [Actigraphy Cleaner](#actigraphy-cleaner)
+  - [Table of Contents](#table-of-contents)
+  - [About Actigraphy Cleaner](#about-actigraphy-cleaner)
+  - [Requirements](#requirements)
+    - [Optional](#optional)
+  - [Setting up Python](#setting-up-python)
+  - [How to use](#how-to-use)
 
 ## About Actigraphy Cleaner
 
