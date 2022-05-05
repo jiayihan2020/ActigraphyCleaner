@@ -18,7 +18,7 @@ The Actigraphy Cleaner attempts to clean up the CSV file(s) taken from Philips A
 
 1) Python 3.6+
    - Pandas library is installed.
-2) Actigraphy_Cleaner.py
+2) ```Actigraphy_Cleaner.py```
 3) CSV file(s) obtained from the Philips Actiwatch.
 
 ### Optional
@@ -37,6 +37,6 @@ pip install -U pandas
 ## How to use
 
 1. Place the CSV file(s) in the same folder where the Actigraphy_Cleaner.py is located.
-2. Open Actigraphy_Cleaner.py by using a text editor or Python's built-in IDLE.
+2. Open ```Actigraphy_Cleaner.py``` by using a text editor or Python's built-in IDLE.
 3. Modify the input and output directory if needed. By default, the input directory is the current working directory (i.e. the location where the Actigraphy_Cleaner.py is located). The python script will create a new subdirectory where all the modified CSV generated will be stored.
-4. Run the Actigraphy_Cleaner.py script. This can be done by pressing "F5" on your keyboard if you are using the Python's built-in IDLE. If you are using a text editor mentioned in the [Optional](#optional) section, please check the editor's user guide.
+4. Run the ```Actigraphy_Cleaner.py``` script. This can be done by pressing "F5" on your keyboard if you are using the Python's built-in IDLE. If you are using a text editor mentioned in the [Optional](#optional) section, please check the editor's user guide.
