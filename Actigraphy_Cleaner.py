@@ -4,8 +4,8 @@ import re
 import csv
 import os
 
-input_directory = "SIT_LTLB"
-output_directory = "SIT_LTLB Group"
+input_directory = "SIT_controlGroup"
+output_directory = "SIT_Control Group"
 os.chdir(input_directory)
 
 
@@ -43,6 +43,8 @@ def actigraphy_data():
                 "%-d/%-m/%y"
             )  # For Windows, try replacing '-' with '#'
             # df["Time"].apply(pd.to_datetime)
+            df["Time"] = pd.to_datetime(df["Time"], format="%H:%M:%S")
+            df["Time"] = pd.to_datetime(df["Time"]).dt.strftime("%H:%M")
             # df["Time"] = pd.to_datetime(df["Time"]).dt.strftime("%#H:%M")
             output_filename = file.split(".")[0]
 
