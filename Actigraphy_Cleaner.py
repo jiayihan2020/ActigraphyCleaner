@@ -1,8 +1,8 @@
-from genericpath import isdir
 import pandas as pd
 import re
 import csv
 import os
+import platform
 
 input_directory = "SIT_controlGroup"
 output_directory = "SIT_Control Group"
@@ -16,7 +16,7 @@ def actigraphy_data():
         print(f"Now reading {file}...")
 
         row = 17
-        if not isdir(file):
+        if not os.path.isdir(file):
 
             with open(file) as csv_file:
                 csv_reader = csv.reader(csv_file)
@@ -39,10 +39,11 @@ def actigraphy_data():
             df["Date"] = pd.to_datetime(df["Date"], format="%d/%m/%Y")
             df = df.rename(columns={"Activity": "Axis1"})
             df["Axis1"].fillna(0, inplace=True)
-            df["Date"] = pd.to_datetime(df["Date"]).dt.strftime(
-                "%-d/%-m/%y"
-            )  # For Windows, try replacing '-' with '#'
-            # df["Time"].apply(pd.to_datetime)
+            if platform.system() == "Windows":
+                df["Date"] = pd.to_datetime(df["Date"]).dt.strftime("%e/%#m/%y")
+            else:
+                df["Date"] = pd.to_datetime(df["Date"]).dt.strftime("%-d/%-m/%y")
+
             df["Time"] = pd.to_datetime(df["Time"], format="%H:%M:%S")
             df["Time"] = pd.to_datetime(df["Time"]).dt.strftime("%H:%M")
             # df["Time"] = pd.to_datetime(df["Time"]).dt.strftime("%#H:%M")
