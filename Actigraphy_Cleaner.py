@@ -46,10 +46,10 @@ def actigraphy_data():
 
             df["Time"] = pd.to_datetime(df["Time"], format="%H:%M:%S")
             df["Time"] = pd.to_datetime(df["Time"]).dt.strftime("%H:%M")
-            # df["Time"] = pd.to_datetime(df["Time"]).dt.strftime("%#H:%M")
             output_filename = file.split(".")[0]
 
             try:
+                print(f"Exporting as {output_filename}_all epoch.csv")
                 df.to_csv(
                     f"./{output_directory}/{output_filename}_all epoch.csv",
                     index=False,
@@ -62,6 +62,7 @@ def actigraphy_data():
                     index=False,
                     encoding="utf-8",
                 )
+    print("All done!")
 
     return None
 
