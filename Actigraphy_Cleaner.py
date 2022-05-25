@@ -4,8 +4,13 @@ import csv
 import os
 import platform
 
-input_directory = "SIT_controlGroup"
-output_directory = "SIT_Control Group"
+# --- User input ---
+input_directory = "SIT_controlGroup"  # Which folder contains the raw csv input?
+output_directory = (
+    "SIT_Control Group"  # Which folder do you want to export the formatted csv to?
+)
+
+# ------------------
 os.chdir(input_directory)
 
 
