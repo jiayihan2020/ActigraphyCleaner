@@ -43,7 +43,6 @@ def actigraphy_data():
             df = df.filter(["Date", "Time", "Activity"])
             df["Date"] = pd.to_datetime(df["Date"], format="%d/%m/%Y")
             df = df.rename(columns={"Activity": "Axis1"})
-            df["Axis1"].fillna(0, inplace=True)
             if platform.system() == "Windows":
                 df["Date"] = pd.to_datetime(df["Date"]).dt.strftime("%e/%#m/%y")
             else:
