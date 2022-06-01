@@ -5,9 +5,9 @@ import os
 import platform
 
 # --- User input ---
-input_directory = "SIT_controlGroup"  # Which folder contains the raw csv input?
+input_directory = "csv_file"  # Which folder contains the raw csv input?
 output_directory = (
-    "SIT_Control Group"  # Which folder do you want to export the formatted csv to?
+    "formatted_csv"  # Which folder do you want to export the formatted csv to?
 )
 
 # ------------------
