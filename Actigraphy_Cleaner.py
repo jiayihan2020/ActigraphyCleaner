@@ -43,13 +43,28 @@ def actigraphy_data():
             df = df.filter(["Date", "Time", "Activity"])
             df["Date"] = pd.to_datetime(df["Date"], format="%d/%m/%Y")
             df = df.rename(columns={"Activity": "Axis1"})
+
             if platform.system() == "Windows":
                 df["Date"] = pd.to_datetime(df["Date"]).dt.strftime("%e/%#m/%y")
             else:
                 df["Date"] = pd.to_datetime(df["Date"]).dt.strftime("%-d/%-m/%y")
 
-            df["Time"] = pd.to_datetime(df["Time"], format="%H:%M:%S")
-            df["Time"] = pd.to_datetime(df["Time"]).dt.strftime("%H:%M")
+            if (
+                pd.to_datetime(df["Time"], format="%H:%M:%S", errors="coerce")
+                .notnull()
+                .all()
+            ):
+                print("no")
+                df["Time"] = pd.to_datetime(df["Time"], format="%H:%M:%S")
+                df["Time"] = pd.to_datetime(df["Time"]).dt.strftime("%H:%M")
+            elif (
+                pd.to_datetime(df["Time"], format="%I:%M:%S %P", errors="coerce")
+                .notnull()
+                .all()
+            ):
+                print("yes")
+                df["Time"] = pd.to_datetime(df["Time"], format="%I:%M:%S %P")
+                df["Time"] = pd.to_datetime(df["Time"]).dt.strftime("%H:%M")
             output_filename = file.split(".")[0]
 
             try:
