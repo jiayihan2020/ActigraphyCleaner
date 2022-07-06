@@ -9,6 +9,7 @@ input_directory = "csv_file"  # Which folder contains the raw csv input?
 output_directory = (
     "formatted_csv"  # Which folder do you want to export the formatted csv to?
 )
+date_format = "%d/%m/%y"
 
 # ------------------
 os.chdir(input_directory)
@@ -41,7 +42,7 @@ def actigraphy_data():
                 else:
                     break
             df = df.filter(["Date", "Time", "Activity"])
-            df["Date"] = pd.to_datetime(df["Date"], format="%d/%m/%Y")
+            df["Date"] = pd.to_datetime(df["Date"], format=date_format)
             df = df.rename(columns={"Activity": "Axis1"})
 
             if platform.system() == "Windows":
@@ -54,7 +55,6 @@ def actigraphy_data():
                 .notnull()
                 .all()
             ):
-                print("no")
                 df["Time"] = pd.to_datetime(df["Time"], format="%H:%M:%S")
                 df["Time"] = pd.to_datetime(df["Time"]).dt.strftime("%H:%M")
             elif (
@@ -62,10 +62,9 @@ def actigraphy_data():
                 .notnull()
                 .all()
             ):
-                print("yes")
                 df["Time"] = pd.to_datetime(df["Time"], format="%I:%M:%S %p")
                 df["Time"] = pd.to_datetime(df["Time"]).dt.strftime("%H:%M")
-            output_filename = file.split(".")[0]
+            output_filename = file.split("_")[0]
 
             try:
                 print(f"Exporting as {output_filename}_all epoch.csv")
