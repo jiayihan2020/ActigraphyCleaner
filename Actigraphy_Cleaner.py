@@ -58,12 +58,12 @@ def actigraphy_data():
                 df["Time"] = pd.to_datetime(df["Time"], format="%H:%M:%S")
                 df["Time"] = pd.to_datetime(df["Time"]).dt.strftime("%H:%M")
             elif (
-                pd.to_datetime(df["Time"], format="%I:%M:%S %P", errors="coerce")
+                pd.to_datetime(df["Time"], format="%I:%M:%S %p", errors="coerce")
                 .notnull()
                 .all()
             ):
                 print("yes")
-                df["Time"] = pd.to_datetime(df["Time"], format="%I:%M:%S %P")
+                df["Time"] = pd.to_datetime(df["Time"], format="%I:%M:%S %p")
                 df["Time"] = pd.to_datetime(df["Time"]).dt.strftime("%H:%M")
             output_filename = file.split(".")[0]
 
