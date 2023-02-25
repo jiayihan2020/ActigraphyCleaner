@@ -12,7 +12,7 @@
 
 ## About Actigraphy Cleaner
 
-The Actigraphy Cleaner attempts to clean up the CSV file(s) taken from Philips Actiwatch, and extract only the relevant data needed for further analysis using the SleepAnnotate R script.
+The Actigraphy Cleaner attempts to clean up the CSV file(s) taken from Philips Actiwatch, and extract only the relevant data needed for further analysis using the [SleepAnnotate R](https://github.com/YngMiinLoke/SleepAnnotate) scripts.
 
 ## Requirements
 
