@@ -9,7 +9,7 @@ input_directory = "csv_file"  # Which folder contains the raw csv input?
 output_directory = (
     "formatted_csv"  # Which folder do you want to export the formatted csv to?
 )
-date_format = "%d/%m/%y"
+date_format = "%d/%m/%Y"
 
 # ------------------
 os.chdir(input_directory)
